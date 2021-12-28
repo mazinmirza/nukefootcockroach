@@ -43,14 +43,14 @@ function round(playerChoice) {
     let compChoice = compPlay();
     if (playerChoice == compChoice) {
         playerDraw(playerChoice, compChoice);
-    } else if ((playerChoice == 'nuke' && compChoice == 'cockroach') ||
-        (playerChoice == 'cockroach' && compChoice == 'foot') ||
-        (playerChoice == 'foot' && compChoice == 'nuke')) {
-        playerScore++;
-        playerWon(playerChoice, compChoice);
     } else if ((playerChoice == 'nuke' && compChoice == 'foot') ||
         (playerChoice == 'cockroach' && compChoice == 'nuke') ||
         (playerChoice == 'foot' && compChoice == 'cockroach')) {
+        playerScore++;
+        playerWon(playerChoice, compChoice);
+    } else if ((playerChoice == 'nuke' && compChoice == 'cockroach') ||
+        (playerChoice == 'cockroach' && compChoice == 'foot') ||
+        (playerChoice == 'foot' && compChoice == 'nuke')) {
         compScore++;
         playerLost(playerChoice, compChoice);
     } else console.log('somethings gone wrong...');
@@ -61,7 +61,7 @@ function round(playerChoice) {
 
 function playerWon(playerChoice, compChoice) {
     txtPlayerScore.textContent = 'Player: ' + playerScore;
-    const winMessage = result.textContent = 'Winner!! ' + playerChoice + ' beats ' + compChoice;
+    result.textContent = 'Winner!! ' + playerChoice + ' beats ' + compChoice;
     if (playerScore == 5) {
         gameOver('Player ')
     }
@@ -69,20 +69,19 @@ function playerWon(playerChoice, compChoice) {
 
 function playerLost(playerChoice, compChoice) {
     txtCompScore.textContent = 'Computer: ' + compScore;
-    const loseMessage = result.textContent = 'Loser!! ' + compChoice + ' beats ' + playerChoice;
+    result.textContent = 'Loser!! ' + compChoice + ' beats ' + playerChoice;
     if (compScore == 5) {
         gameOver('Computer ')
     }
 }
 
 function playerDraw(playerChoice, compChoice) {
-    const drawMessage = result.textContent = 'Draw!! ' + playerChoice + ' draws with ' + compChoice;
+    result.textContent = 'Draw!! ' + playerChoice + ' draws with ' + compChoice;
 }
 
 // gameover sequence
 
 function gameOver(winner) {
-    alert(winner + 'wins, please refresh!');
-    userScore = 0;
-    compScore = 0;
+    alert (winner + 'wins!! Press OK to restart');
+    window.location.reload ();
 }

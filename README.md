@@ -6,3 +6,4 @@ Objectives:
 2. Practice basic functionality with JS
 3. Tie in core HTML and CSS elements for a user interface.
 4. Practice with GIT forking and main branching. 
+5. Reuploading practice
